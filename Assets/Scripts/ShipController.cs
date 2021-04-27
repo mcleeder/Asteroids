@@ -8,11 +8,13 @@ public class ShipController : MonoBehaviour
     public float shipDirectionMultiplier = 200f;
     private float shipVerticalAxis;
     private Rigidbody rb;
+    private ParticleSystem ps;
     public GameObject projectilePrefab;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        ps = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -25,7 +27,21 @@ public class ShipController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             ShipShoot();
         }
+        RocketEmission();
         Helpers.ZAxisMovementClamp(transform);
+    }
+
+    private void RocketEmission()
+    {
+        var emission = ps.emission;
+        if (shipVerticalAxis == 1)
+        {
+            emission.enabled = true;
+        }
+        else
+        {
+            emission.enabled = false;
+        }
     }
 
     private void ShipShoot()
