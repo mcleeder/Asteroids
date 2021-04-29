@@ -2305,7 +2305,7 @@ ParticleSystem:
         m_RotationOrder: 4
     inWorldSpace: 0
   InheritVelocityModule:
-    enabled: 0
+    enabled: 1
     m_Mode: 0
     m_Curve:
       serializedVersion: 2
@@ -5237,7 +5237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8334067026af2734ebf2d313843a94d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidPrefab: {fileID: 7305167128835377146, guid: c18fbadc9ca69f7439f0a676cb6f57e9, type: 3}
+  asteroidPrefab: {fileID: 151664, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
   AsteroidSeedCount: 6
 --- !u!4 &1768286109
 Transform:

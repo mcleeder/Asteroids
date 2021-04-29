@@ -22,6 +22,6 @@ public class AsteroidRandomizer : MonoBehaviour
         var location = new Vector3(x, y, 0f);
         var roid = Instantiate(asteroidPrefab, location, Random.rotation);
         roid.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(location), ForceMode.Impulse);
-        roid.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f) * 2f);
+        roid.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f) * 2f, 0f));
     }
 }

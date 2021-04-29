@@ -4,6 +4,7 @@ public class AsteroidCollision : MonoBehaviour
 {
 
     public GameObject SmallAsteroidPrefab;
+    public float explosionForce;
 
     // Update is called once per frame
     void Update()
@@ -29,7 +30,8 @@ public class AsteroidCollision : MonoBehaviour
             {
                 var grid = new Vector3(x,y,0f);
                 var roid = Instantiate(SmallAsteroidPrefab, transform.position + grid, Random.rotation);
-                roid.GetComponent<Rigidbody>().AddExplosionForce(10f, transform.position, 0f);
+                roid.GetComponent<Rigidbody>().AddTorque(grid * 2f);
+                roid.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 0f);
             }
         }
     }

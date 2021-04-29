@@ -46,7 +46,7 @@ public class ShipController : MonoBehaviour
 
     private void ShipShoot()
     {
-        var proj = Instantiate(projectilePrefab,transform.position, Quaternion.identity);
+        var proj = Instantiate(projectilePrefab,transform.position, transform.rotation);
         proj.GetComponent<Rigidbody>().AddForce(transform.rotation * Vector3.forward * .5f, ForceMode.Impulse);
     }
 
