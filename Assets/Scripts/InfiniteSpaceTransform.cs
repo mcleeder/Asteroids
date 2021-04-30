@@ -4,32 +4,69 @@ using UnityEngine;
 
 public class InfiniteSpaceTransform : MonoBehaviour
 {
+    bool isWrappingX = false;
+    bool isWrappingY = false;
+    Renderer[] renderers;
 
     private void Update()
     {
-        Check(transform);
+        ScreenWrap();
     }
 
-    private void Check(Transform transform)
+    void Start()
     {
-        if (transform.position.y < -5.5f)
+        renderers = GetComponentsInChildren<Renderer>();
+    }
+
+    void ScreenWrap()
+    {
+        var isVisible = CheckRenderers();
+
+        if (isVisible)
         {
-            transform.position += new Vector3(0f, 11f, 0f);
+            isWrappingX = false;
+            isWrappingY = false;
+            return;
         }
 
-        if (transform.position.y > 5.6f)
+        if (isWrappingX && isWrappingY)
         {
-            transform.position += new Vector3(0f, -11f, 0f);
+            return;
         }
 
-        if (transform.position.x < -12.5f)
+        var cam = Camera.main;
+        var viewportPosition = cam.WorldToViewportPoint(transform.position);
+        var newPosition = transform.position;
+
+        if (!isWrappingX && (viewportPosition.x > 1 || viewportPosition.x < 0))
         {
-            transform.position += new Vector3(25f, 0f, 0f);
+            newPosition.x = -newPosition.x;
+
+            isWrappingX = true;
         }
 
-        if (transform.position.x > 12.6f)
+        if (!isWrappingY && (viewportPosition.y > 1 || viewportPosition.y < 0))
         {
-            transform.position += new Vector3(-25, 0f, 0f);
+            newPosition.y = -newPosition.y;
+
+            isWrappingY = true;
         }
+
+        transform.position = newPosition;
+    }
+
+    bool CheckRenderers()
+    {
+        foreach (var renderer in renderers)
+        {
+            // If at least one render is visible, return true
+            if (renderer.isVisible)
+            {
+                return true;
+            }
+        }
+
+        // Otherwise, the object is invisible
+        return false;
     }
 }

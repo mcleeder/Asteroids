@@ -24,15 +24,15 @@ public class AsteroidCollision : MonoBehaviour
 
     private void SpawnSmallAsteroids()
     {
-        for (float y = -.15f; y < .30f; y += .30f)
+        float degrees = Random.Range(1f,360f);
+
+        for (int x = 0; x < 4; x++)
         {
-            for (float x = -.15f; x < .30f; x += .30f)
-            {
-                var grid = new Vector3(x,y,0f);
-                var roid = Instantiate(SmallAsteroidPrefab, transform.position + grid, Random.rotation);
-                roid.GetComponent<Rigidbody>().AddTorque(grid * 2f);
-                roid.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 0f);
-            }
+            Vector3 spawnRotation = (Quaternion.Euler(0f, 0f, degrees) * new Vector3(.25f,.25f,0f));
+            var roid = Instantiate(SmallAsteroidPrefab, transform.position + spawnRotation, Random.rotation);
+            roid.GetComponent<Rigidbody>().AddTorque(Vector3.Normalize(transform.position));
+            roid.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, 0f);
+            degrees += Random.Range(75f,90f);
         }
     }
 }
