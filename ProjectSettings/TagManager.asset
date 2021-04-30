@@ -7,6 +7,8 @@ TagManager:
   - Asteroid
   - Projectile
   - KnownSpace
+  - Enemy
+  - SmallAsteroid
   layers:
   - Default
   - TransparentFX

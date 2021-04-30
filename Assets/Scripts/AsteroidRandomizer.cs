@@ -5,16 +5,33 @@ public class AsteroidRandomizer : MonoBehaviour
 
     public GameObject asteroidPrefab;
     public int AsteroidSeedCount;
+    public int AsteroidLowerLimit;
+
+    private GameObject[] asteroids;
 
     // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < AsteroidSeedCount; i++)
         {
-            var randX = Random.Range(-10f, 10f);
-            var randY = Random.Range(-10f, 10f);
-            SpawnAsteroid(randX, randY);
+            SpawnRandomAsteroid();
         }
+    }
+
+    void Update()
+    {
+        asteroids = GameObject.FindGameObjectsWithTag("Asteroid");
+        if (asteroids.Length < AsteroidLowerLimit)
+        {
+            SpawnRandomAsteroid();
+        }
+    }
+
+    private void SpawnRandomAsteroid()
+    {
+        var randX = Random.Range(-10f, 10f);
+        var randY = Random.Range(-10f, 10f);
+        SpawnAsteroid(randX, randY);
     }
 
     public void SpawnAsteroid(float x, float y)

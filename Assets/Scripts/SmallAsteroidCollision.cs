@@ -8,6 +8,7 @@ public class SmallAsteroidCollision : MonoBehaviour
     {
         if (other.tag == "Projectile")
         {
+            Scoreboard.ScoreSmallAsteroid();
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
