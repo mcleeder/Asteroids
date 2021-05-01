@@ -4,6 +4,7 @@ public class AsteroidCollision : MonoBehaviour
 {
 
     public GameObject SmallAsteroidPrefab;
+    public ParticleSystem ExplosionPrefab;
     public float explosionForce;
 
     // Update is called once per frame
@@ -20,7 +21,14 @@ public class AsteroidCollision : MonoBehaviour
             SpawnSmallAsteroids();
             Destroy(other.gameObject);
             Destroy(gameObject);
+            ParticleExplode();
         }
+    }
+
+    private void ParticleExplode()
+    {
+        var explosion = Instantiate(ExplosionPrefab, transform.position, transform.rotation);
+        explosion.Play();
     }
 
     private void SpawnSmallAsteroids()

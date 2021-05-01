@@ -299,6 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SmallAsteroidPrefab: {fileID: 130102, guid: 04d0bf4be9447154188d86f6e3b8dce9, type: 3}
+  ExplosionPrefab: {fileID: 3767900691576390331, guid: 1a1cdf3e014eacc4194dbb79dbc874c2, type: 3}
   explosionForce: 10
 --- !u!135 &5980290628637164042
 SphereCollider:
