@@ -585,6 +585,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1246126619864630638, guid: f76c35f937427a542b3a91625d8d40f2, type: 3}
   projectileSound: {fileID: 1134137622}
   thrusterSound: {fileID: 1134137623}
+  projectileSoundClip: {fileID: 8300000, guid: 93d387915cbccde429ae7c13effae614, type: 3}
 --- !u!64 &1134137613
 MeshCollider:
   m_ObjectHideFlags: 0

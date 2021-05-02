@@ -13,9 +13,9 @@ public class ShipCollision : MonoBehaviour
 
         if (objtag == "Asteroid" || objtag == "SmallAsteroid")
         {
-            Debug.Log("boom");
             GetComponent<Renderer>().enabled = false;
             GetComponent<Collider>().enabled = false;
+            GetComponent<ShipController>().enabled = false;
             Instantiate(ps, transform.position, transform.rotation);
         }
     }

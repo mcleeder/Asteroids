@@ -81,8 +81,21 @@ public class AsteroidRandomizer : MonoBehaviour
 
     private Vector3 RandomViewCorner()
     {
+        var spawnPointsArray = new float[][] {
+        new float[] {0f,0f},
+        new float[] {0f,.5f},
+        new float[] {0f,1f},
+        new float[] {.5f,0f},
+        new float[] {1f,0f},
+        new float[] {1f,.5f},
+        new float[] {1f,1f},
+        new float[] {.5f,1},
+        };
+        int randSeed = Random.Range(0,spawnPointsArray.Length);
+        Vector3 randomCorner = new Vector3(spawnPointsArray[randSeed][0], spawnPointsArray[randSeed][1], 0f);
+
         var cam = Camera.main;
-        Vector3 randomCorner = new Vector3(Random.Range(0, 2), Random.Range(0, 2), 0f);
+        //Vector3 randomCorner = new Vector3(Random.Range(0, 2), Random.Range(0, 2), 0f);
         return cam.ViewportToWorldPoint(randomCorner);
     }
 
