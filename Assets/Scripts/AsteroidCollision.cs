@@ -6,6 +6,7 @@ public class AsteroidCollision : MonoBehaviour
     public GameObject SmallAsteroidPrefab;
     public ParticleSystem ExplosionPrefab;
     public float explosionForce;
+    public AudioClip explosionSound;
 
     // Update is called once per frame
     void Update()
@@ -19,9 +20,10 @@ public class AsteroidCollision : MonoBehaviour
         {
             Scoreboard.ScoreBigAsteroid();
             SpawnSmallAsteroids();
+            ParticleExplode();
+            AudioController.Instance.Play(explosionSound);
             Destroy(other.gameObject);
             Destroy(gameObject);
-            ParticleExplode();
         }
     }
 

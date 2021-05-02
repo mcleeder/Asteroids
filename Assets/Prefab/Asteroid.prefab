@@ -301,6 +301,7 @@ MonoBehaviour:
   SmallAsteroidPrefab: {fileID: 130102, guid: 04d0bf4be9447154188d86f6e3b8dce9, type: 3}
   ExplosionPrefab: {fileID: 3767900691576390331, guid: 1a1cdf3e014eacc4194dbb79dbc874c2, type: 3}
   explosionForce: 10
+  explosionSound: {fileID: 8300000, guid: 20e4354332102b44c98a6423c6ab30e9, type: 3}
 --- !u!135 &5980290628637164042
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -75,5 +75,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExplosionSmall
       objectReference: {fileID: 0}
+    - target: {fileID: 6584490416381844484, guid: 1a1cdf3e014eacc4194dbb79dbc874c2, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a75cde23d6f06c146a79061042e3d56b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a1cdf3e014eacc4194dbb79dbc874c2, type: 3}

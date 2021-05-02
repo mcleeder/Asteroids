@@ -6,6 +6,7 @@ public class SmallAsteroidCollision : MonoBehaviour
 {
 
     public ParticleSystem ExplosionPrefab;
+    public AudioClip explosionSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,7 @@ public class SmallAsteroidCollision : MonoBehaviour
             Scoreboard.ScoreSmallAsteroid();
             Destroy(other.gameObject);
             ParticleExplode();
+            AudioController.Instance.Play(explosionSound, .25f);
             Destroy(gameObject);
         }
     }

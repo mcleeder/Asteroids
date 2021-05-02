@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 67860699383773688}
   m_Layer: 0
   m_Name: SmallAsteroid
-  m_TagString: Enemy
+  m_TagString: SmallAsteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosionPrefab: {fileID: 2212026300338789284, guid: 05b6d81327f7346499ba3b604463e728, type: 3}
+  explosionSound: {fileID: 8300000, guid: 20e4354332102b44c98a6423c6ab30e9, type: 3}
 --- !u!114 &4740840988559479376
 MonoBehaviour:
   m_ObjectHideFlags: 0

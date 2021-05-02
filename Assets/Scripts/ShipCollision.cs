@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class ShipCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public ParticleSystem ps;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -22,7 +13,10 @@ public class ShipCollision : MonoBehaviour
 
         if (objtag == "Asteroid" || objtag == "SmallAsteroid")
         {
-            Destroy(gameObject);
+            Debug.Log("boom");
+            GetComponent<Renderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
+            Instantiate(ps, transform.position, transform.rotation);
         }
     }
 }

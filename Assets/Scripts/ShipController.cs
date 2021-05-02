@@ -10,6 +10,9 @@ public class ShipController : MonoBehaviour
     private Rigidbody rb;
     private ParticleSystem ps;
     public GameObject projectilePrefab;
+    public AudioSource projectileSound;
+    public AudioSource thrusterSound;
+    public AudioClip projectileSoundClip;
 
     private void Start()
     {
@@ -27,20 +30,21 @@ public class ShipController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             ShipShoot();
         }
-        RocketEmission();
+        RocketEffects();
         Helpers.ZAxisMovementClamp(transform);
     }
 
-    private void RocketEmission()
+    private void RocketEffects()
     {
-        var emission = ps.emission;
         if (shipVerticalAxis == 1)
         {
-            emission.enabled = true;
+            ps.Play();
+            thrusterSound.enabled = true;
         }
         else
         {
-            emission.enabled = false;
+            ps.Stop();
+            thrusterSound.enabled = false;
         }
     }
 
@@ -48,10 +52,14 @@ public class ShipController : MonoBehaviour
     {
         var proj = Instantiate(projectilePrefab,transform.position, transform.rotation);
         proj.GetComponent<Rigidbody>().AddForce(transform.rotation * Vector3.forward * .5f, ForceMode.Impulse);
+        projectileSound.PlayOneShot(projectileSoundClip);
     }
 
     void FixedUpdate()
     {
-        rb.AddForce(Quaternion.Euler(0f, -180f, shipDirection) * new Vector3(-1f,0f,0f) * shipVerticalAxis);
+        if (shipVerticalAxis == 1)
+        {
+            rb.AddForce(Quaternion.Euler(0f, -180f, shipDirection) * new Vector3(-1f, 0f, 0f) * shipVerticalAxis);
+        }
     }
 }
