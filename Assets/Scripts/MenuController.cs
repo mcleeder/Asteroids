@@ -10,4 +10,9 @@ public class MenuController : MonoBehaviour
         LevelLoader.levelComplete = true;
     }
 
+    public static void RestartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
 }

@@ -14,6 +14,14 @@ public class Scoreboard : MonoBehaviour
     private static int SmallAsteroidDestructionCount = 0;
     private static int BigAsteroidDestructionCount = 0;
 
+    void Start()
+    {
+        if (score != 0)
+        {
+            score = 0;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
