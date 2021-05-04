@@ -6,6 +6,8 @@ public class ShipCollision : MonoBehaviour
 {
 
     public ParticleSystem ps;
+    public AudioClip playerBoomSound;
+    private IEnumerator destroyPlayerRoutine;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -13,10 +15,22 @@ public class ShipCollision : MonoBehaviour
 
         if (objtag == "Asteroid" || objtag == "SmallAsteroid")
         {
-            GetComponent<Renderer>().enabled = false;
-            GetComponent<Collider>().enabled = false;
-            GetComponent<ShipController>().enabled = false;
-            Instantiate(ps, transform.position, transform.rotation);
+            AudioController.Instance.Play(playerBoomSound);
+            destroyPlayerRoutine = DestroyPlayer();
+            StartCoroutine(destroyPlayerRoutine);
         }
+    }
+
+    IEnumerator DestroyPlayer()
+    {
+        Instantiate(ps, transform.position, transform.rotation);
+
+        LevelLoader.levelComplete = true;
+
+        yield return null;
+
+        Destroy(gameObject);
+
+        
     }
 }
