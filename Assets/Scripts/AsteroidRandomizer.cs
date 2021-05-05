@@ -35,8 +35,8 @@ public class AsteroidRandomizer : MonoBehaviour
 
     private void BigAsteroidSpawnerSystem()
     {
-        //Spawn big roid in 4 seconds when there are none left
-        if (bigAsteroidSpawnTimer > 4f && asteroids.Length < 1)
+        //Spawn big roid in 10 seconds if there are none left
+        if (bigAsteroidSpawnTimer > 10f && asteroids.Length < 1)
         {
             ThrowBigAsteroidAtPlayer(1.2f);
             bigAsteroidSpawnTimer = 0f;
@@ -45,7 +45,7 @@ public class AsteroidRandomizer : MonoBehaviour
         //Spawn faster big roid at 15 seconds regardless
         if (bigAsteroidSpawnTimer > 15f)
         {
-            ThrowBigAsteroidAtPlayer(1.5f);
+            ThrowBigAsteroidAtPlayer(1.1f);
             bigAsteroidSpawnTimer = 0f;
         }
     }
@@ -72,7 +72,7 @@ public class AsteroidRandomizer : MonoBehaviour
     {
         var spawnLocation = RandomViewCorner();
         var angleToPlayer = player.transform.position - spawnLocation;
-        SpawnAsteroid(asteroidBigPrefab, spawnLocation, angleToPlayer);
+        SpawnAsteroid(asteroidBigPrefab, spawnLocation, angleToPlayer, speed);
     }
 
     private void ThrowSmallAsteroidAtPlayer(float speed = .8f)
